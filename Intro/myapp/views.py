@@ -8,6 +8,17 @@ def home(request):
 def second(request):
     return render(request, 'second.html')
 
+def third(request):
+    var = "hello world"
+    greeting = "hey, how are you"
+    fruits = ["apple", "orange", "mango"]
+    my_dictionary = {
+        "var": var,
+        "msg": greeting,
+        "myfruits": fruits,
+    }
+    return render(request, 'third.html', context=my_dictionary)
+
 def add(request, a, b):
     return HttpResponse(a+b)
 
