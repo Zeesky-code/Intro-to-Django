@@ -28,3 +28,9 @@ def intro(request, name, age):
         "age" : age
     }
     return JsonResponse(mydictionary)
+
+def imagepage(request):
+    return render(request, 'imagepage.html')
+
+def imagepage2(request):
+    return render(request, 'imagepage2.html')
