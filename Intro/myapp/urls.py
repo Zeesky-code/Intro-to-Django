@@ -13,4 +13,6 @@ urlpatterns=[
     path('imagepage3', views.imagepage3, name="imagepage3"),
     path('imagepage4', views.imagepage4, name="imagepage4"),
     path('imagepage5/<str:imagename>', views.imagepage5, name="imagepage5"),
+    path('myform',views.myform, name="myform"),
+    path('submitmyform',views.submitmyform, name="submitmyform"),
 ]

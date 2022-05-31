@@ -53,3 +53,15 @@ def imagepage5(request, imagename):
         "var" : var
     }
     return render(request, 'imagepage5.html', context=mydictionary)
+
+def myform(request):
+    return render(request,'myform.html')
+
+def submitmyform(request):
+
+    formdictionary = {
+        "var1" : request.POST['mytext'],
+        "var2" : request.POST['mytextarea'],
+        "method" : request.method
+    }
+    return JsonResponse(formdictionary)
