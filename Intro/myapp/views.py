@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
+from .forms import *
 
 # Create your views here.
 def home(request):
@@ -65,3 +66,48 @@ def submitmyform(request):
         "method" : request.method
     }
     return JsonResponse(formdictionary)
+
+def myform2(request):
+    if request.method == "POST":
+        form = FeedbackForm(request.POST)
+        if form.is_valid():
+            title = request.POST['title']
+            subject = request.POST['subject']
+            print(title)
+            print(subject)
+            var = str("Form Submitted by: " + str(request.method))
+            return HttpResponse(var)
+        else:
+            mydictionary = {
+                "form": form
+            }
+            return render(request, 'myform2.html', context=mydictionary)
+    else:
+        form = FeedbackForm()
+        mydictionary = {
+            "form": form
+        }
+        return render(request, 'myform2.html', context=mydictionary)
+
+def login(request):
+    if request.method == "POST":
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            username = request.POST['username']
+            password = request.POST['password']
+            var = str("Hello " + username)
+            return HttpResponse(var)
+        else:
+            mydictionary = {
+                "form": form
+            }
+            return render(request, 'login.html', context=mydictionary)
+    else:
+        form = LoginForm()
+        mydictionary = {
+            "form": form
+        }
+        return render(request, 'login.html', context=mydictionary)
+
+
+
