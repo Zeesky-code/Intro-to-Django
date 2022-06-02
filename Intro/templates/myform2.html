@@ -4,13 +4,23 @@
 
 {% block content %}
 <div class="col-md-6" style="margin: 0 auto;">
+    {% if success == True %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>{{successmsg}}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% elif success == False %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>{{errormsg}}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endif %}
     <h1>This is the Second Form</h1>
     <form method="POST">
+        <p class="text-muted">Note : Title should be Capital</p>
         {% csrf_token %}
         {{form.as_p}}
         <button type="submit" class="btn btn-primary" style="margin: 0 auto; display: block;">Submit</button>
     </form>
 </div>
-
-
 {% endblock %}
